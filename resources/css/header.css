@@ -1,0 +1,51 @@
+div{
+    padding: 10px;
+  }
+
+  #reviewText{
+    border: 1px solid rgb(185, 185, 185);
+    padding: 5px;
+    border-radius: 4px;
+    font-weight: normal;
+    background-color: rgb(211, 211, 211);
+  }
+
+  #reviewTextBody{
+    border: 1px solid rgb(185, 185, 185);
+    border-radius: 4px;
+    font-weight: normal;
+    min-height: 200px;
+    width: 100%;
+
+  }
+
+  #textDiv{
+    width: 60%;
+  }
+
+  #drinkName{
+    font-size: 30px;
+  }
+
+  #modalLabels{
+      width: 40%;
+  }
+
+  #reviewBody{
+    width: 60%;
+    height: 100%;
+  }
+
+  #drinkLabel, #reviewLabel, #reviewText{
+    width: 100%;
+  }
+
+
+  label{
+    border: 1px solid rgb(185, 185, 185);
+    padding: 5px;
+    border-radius: 4px;
+    font-weight: normal;
+  }
+
+  
