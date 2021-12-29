@@ -1,6 +1,6 @@
 Welcome!  
 
-Run locally by executing the following commands:  
+Run locally by cloning the repository, and by executing the following commands:  
   docker build . -t tylermoll15/individualprojects_setf-tylermoll15  
   docker-compose up  
   
