@@ -1,6 +1,9 @@
 Welcome!
 
-Run locally by cloning the repository, building the project with docker, and by running "docker-compose up"
-Individual commands are listed in the start.ps1 file
+Run locally by running the following commands:
+  docker build . -t tylermoll15/individualprojects_setf-tylermoll15
+  docker-compose up
+  
+The project with be hosted on port 3000
 
 link: https://cocktails-app-tylermoll15.herokuapp.com/
