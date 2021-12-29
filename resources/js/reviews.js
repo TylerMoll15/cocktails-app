@@ -3,6 +3,7 @@ document.addEventListener("DOMContentLoaded", () => {
             document.getElementById("reviewsTable").style.display = 'none';
             var reviewsDiv = document.getElementById("reviewsDiv");
             reviewsDiv.style.display = 'block';
+            document.getElementById("drinkResult").style.display = "none";
         }
 });
 

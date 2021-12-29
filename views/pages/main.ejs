@@ -1,20 +1,87 @@
 <!DOCTYPE html>
 <html lang="en">
 <title>Home</title>
+
 <head>
   <%- include('../partials/head'); %>
+    <link rel="stylesheet" href="../../resources/css/main.css">
+
 </head>
+
 <body class="container">
 
-<header>
-  <%- include('../partials/header'); %>
-</header>
+  <header>
+    <%- include('../partials/header'); %>
+  </header>
 
-<footer>
-  <%- include('../partials/footer'); %>
-</footer>
+  <div id="mainDiv">
+    <div class="card">
+      <div class="card-header text-dark bg-white d-flex justify-content-center"><strong id="drinkName"></strong></div>
+      <div class="card-body">
+        <img id="drinkImage" class="card-img-top rounded float-left img-fluid" style="max-width:40%;"
+          src="#" alt="#">
+        <div id="textDiv" class="container-sm float-right">
+          <strong>Glass Type</strong>
+          <p id="glass"></p>
+
+          <strong>Instructions</strong>
+          <p id="drinkInstructions"></p>
+
+          <strong id="alcohol"></strong>
+          <br>
+          <br>
+          <button id="reviewButton" class="btn btn-outline-success my-2 my-sm-0 data-toggle=" modal"
+            data-target="#reviewModal" type="submit">Add Review</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  
+
+  <!-- Modal -->
+  <div class="modal fade" id="reviewModal" tabindex="-1" role="dialog" aria-labelledby="reviewModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="reviewModalLabel"><strong>Add Review</strong></h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+
+        <div class="modal-body">
+          <div id="modalLabels" class="container float-left">
+            <label id="drinkLabel">Cocktail Name</label>
+            <br> <br>
+            <label id="reviewLabel">Enter your review here</label>
+          </div>
+
+          <div id="reviewBody" class="container float-right">
+            <form action="/cocktails">
+              <input id="reviewText" name="reviewText" type="text" value="${drinkName}" readonly>
+              <br> <br>
+
+              <input id="reviewTextBody" name="reviewTextBody" type="text">
+              <br>
+              <button type="submit" class="btn btn-success float-right">Submit</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  
+
+
+  <footer>
+    <%- include('../partials/footer'); %>
+  </footer>
 
 
 </body>
 <!-- <script src='../../resources/js/main.js'></script> -->
+
 </html>

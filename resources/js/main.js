@@ -1,5 +1,7 @@
    function APIcall(){
     var searchQuery = document.getElementById("searchQuery");
+    //resets error card
+    document.getElementById("drinkResult").style.display = "none";
 
     //cocktail api call
     console.log(searchQuery.value);
@@ -15,8 +17,13 @@
         //review button grabbing and event listening
         var reviewButton = document.getElementById("reviewButton");
         reviewButton.addEventListener("click", buttonCallback);
+
+        //make gif inivisible
+        var gif = document.getElementById("cocktailsDemo");
+        gif.style.display = "none";
       }
       catch (error){
+        document.getElementById("mainDiv").style.display = 'none';
         console.log("No data");
         console.error(error);
         displayError();
@@ -30,48 +37,29 @@
     if(alcohol == "Alcoholic") alcohol = "has alcohol";
     else if (alcohol == "Non alcoholic") alcohol = "is non-alcoholic";
     else alcohol = "has optional alcohol";
-    
-    //cocktail html
-    var html = `
-      <div class="card">
-      <div class="card-header text-dark bg-white d-flex justify-content-center"><strong
-              id="drinkName">${drinkName}</strong></div>
-      <div class="card-body">
-          <img class="card-img-top rounded float-left img-fluid" style="max-width:40%;" src="${drinkImage}"
-              alt="${drinkName}">
-          <div id="textDiv" class="container-sm float-right">
-              <strong>Glass Type</strong>
-              <p>${glass}</p>
 
-              <strong>Instructions</strong>
-              <p id="drinkInstructions">${drinkInstructions}</p>
+    var drinkName_ = document.getElementById("drinkName");
+    var glass_ = document.getElementById("glass");
+    var drinkImage_ = document.getElementById("drinkImage");
+    var drinkInstructions_ = document.getElementById("drinkInstructions");
+    var alcohol_ = document.getElementById("alcohol");
 
-              <strong>The ${drinkName} ${alcohol}</strong>
-              <br>
-              <br>
-              <button id="reviewButton" class="btn btn-outline-success my-2 my-sm-0 data-toggle=" modal"
-                  data-target="#reviewModal" type="submit">Add Review</button>
-          </div>
-      </div>
-    </div>
-    
-    ${buildModal(drinkName)}
-    `;
+    //setting card values
+    drinkName_.innerHTML = drinkName;
+    drinkImage_.src = drinkImage;
+    drinkImage_.alt = drinkName;
+    glass_.innerHTML = glass;
+    drinkInstructions_.innerHTML = drinkInstructions;
+    alcohol_.innerHTML = `The ${drinkName} ${alcohol}`;
 
-    var drinkResult = document.getElementById("drinkResult");
-    drinkResult.innerHTML = html;
+    document.getElementById("mainDiv").style.display = "inline";
+    document.getElementById("reviewText").value = drinkName;
+
   };
 
   function displayError(){
-    var html = `
-    <div class="card text-white bg-danger mb-3" style="opacity: 0.7">
-    <div class="card-body">
-    No data was found
-    </div>
-    </div>`;
-
-    var drinkResult = document.getElementById("drinkResult");
-    drinkResult.innerHTML = html;
+    document.getElementById("drinkResult").style.display = "inline";
+    document.getElementById("cocktailsDemo").style.display = "none";
   }
 
   function nullSet(curr){
@@ -84,43 +72,4 @@
 
   function buttonCallback(){
     $('#reviewModal').modal();
-  }
-
-
-  function buildModal(drinkName){
-    var modal = `
-        <!-- Modal -->
-        <div class="modal fade" id="reviewModal" tabindex="-1" role="dialog" aria-labelledby="reviewModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg" role="document">
-            <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="reviewModalLabel"><strong>Add Review</strong></h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-             
-            <div class="modal-body">
-                <div id="modalLabels" class="container float-left">
-                <label id="drinkLabel">Cocktail Name</label>
-                <br> <br>
-                <label id="reviewLabel">Enter your review here</label>
-                </div>
-          
-                <div id="reviewBody" class="container float-right">
-                 <form action="/cocktails">
-                  <input id="reviewText" name="reviewText" type="text" value="${drinkName}" readonly>
-                  <br> <br>
-                  
-                  <input id="reviewTextBody" name="reviewTextBody" type="text">
-                  <br>
-                  <button type="submit" class="btn btn-success float-right" >Submit</button>
-                  </form>
-                </div>
-            </div>
-            </div>
-        </div>
-        </div>
-    `;
-    return modal;
   }
