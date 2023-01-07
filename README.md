@@ -5,5 +5,3 @@ Run locally by cloning the repository, and by executing the following commands:
   docker-compose up  
   
 The project with be hosted on port 3000  
-  
-link: https://cocktails-app-tylermoll15.herokuapp.com/  
